@@ -39,7 +39,10 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
   2. < scales > [list of 2 DFs]     DASS-21 sum scores (subscales) for each cohort.
   3. < suomi >  [list of 2 vectors] TRUE = answered in Finnish, FALSE = not.
 
--
+## < defineModels.R >
+
+- output: < models.Rdata >
+  - necessary for < cfa.R >
 
 # 2. Analyses, exploration and visualisation
 
