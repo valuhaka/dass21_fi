@@ -3,6 +3,8 @@
 
 ## Here we define the factor solutions used for the analyses. ##
 
+setwd(".../data")             # YOUR WORKING DIRECTORY HERE
+
 
 models <- list()
 
