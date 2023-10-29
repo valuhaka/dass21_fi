@@ -59,7 +59,7 @@ for (i in 1:2) colnames(chosenVars[[i]]) <- c("gender", "age", "education",
 
 for (i in 1:2) {
   chosenVars[[k]]$gender <- factor(chosenVars[[k]]$gender)
-  levels(chosenVars[[i]]$gender) <- c("Male", "Female")
+  levels(chosenVars[[i]]$gender) <- c("Men", "Women")
   
   chosenVars[[i]]$education <- chosenVars[[i]]$education %>% 
     cut(c(0, 1.5, 3.5, 7),
