@@ -46,7 +46,10 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 
 # 2. Analyses, exploration and visualisation
 
--
+## < table1.R > 
+
+- Input: 1 R.data file with the chosen data for each cohort.
+- Output: Table 1 with the demographic information of the study population.
 
 ## < powerAnalyses.R >
 
