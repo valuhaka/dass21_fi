@@ -7,8 +7,9 @@
 
 library(tidyverse)
 
-setwd('L:/ltdk_hhs45/data')
 backupOptions <- options()
+
+setwd(".../data")             # YOUR WORKING DIRECTORY HERE
 
 
 chosenData <- list(data.frame(),
