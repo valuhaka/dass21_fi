@@ -12,7 +12,7 @@
 library(tidyverse)
 
 backupOptions <- options()
-setwd("L:/ltdk_hhs45/data")
+setwd(".../data")             # YOUR WORKING DIRECTORY HERE
 
 #------------------------------------------------------------------------------#
 
