@@ -28,16 +28,16 @@ load("chosenData.Rdata")
 dass[[1]]           <- data[[1]][, 151:171]
 colnames(dass[[1]]) <- paste(rep("Q", 21), 
                              1:21, sep = "")
-suomi[[1]]          <- data$suomi
-id[[1]]             <- data$ID
+suomi[[1]]          <- data[[1]]$suomi
+id[[1]]             <- data[[1]]$ID
 
 # Older cohort
 
 dass[[2]]           <- data[[2]][, 36:56]
 colnames(dass[[2]]) <- paste(rep("Q", 21), 
                              1:21, sep = "")
-suomi[[2]]          <- data$suomi
-id[[2]]             <- data$tunnus1
+suomi[[2]]          <- data[[2]]$suomi
+id[[2]]             <- data[[2]]$tunnus1
 
 # Remove NAs.
 
