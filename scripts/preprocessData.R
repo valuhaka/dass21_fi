@@ -16,6 +16,7 @@ chosenData <- list(data.frame(),
                    data.frame())
 fullData   <- list(data.frame(),
                    data.frame())
+fullfillsAllConditions <- list()
 
 
 #------------------------------------------------------------------------------#
@@ -83,13 +84,13 @@ condition3 <- a_missing < 2                       # Missing at most 1 anxiety it
 condition4 <- s_missing < 2                       # Missing at most 1 stress item.
 condition5 <- is.na(data$brand_emot_well) == 0    # Not missing RAND-EW in 2022.
 
-fullfillsAllConditions <- condition1 & condition2 & condition3 & condition4 & condition5
+fullfillsAllConditions[[1]] <- condition1 & condition2 & condition3 & condition4 & condition5
 
 
 # Save the data.
 
 fullData[[1]]   <- data
-chosenData[[1]] <- data[fullfillsAllConditions, ] 
+chosenData[[1]] <- data[fullfillsAllConditions[[1]], ] 
 
 
 
@@ -148,9 +149,9 @@ condition2 <- a_missing < 2                       # Missing at most 1 anxiety it
 condition3 <- s_missing < 2                       # Missing at most 1 stress item.
 condition4 <- is.na(data$irand_emot_well) == 0    # Not missing the RAND-EW.
 
-fullfillsAllConditions <- condition1 & condition2 & condition3 & condition4
+fullfillsAllConditions[[2]] <- condition1 & condition2 & condition3 & condition4
 fullData[[2]]   <- data
-chosenData[[2]] <- data[fullfillsAllConditions, ]
+chosenData[[2]] <- data[fullfillsAllConditions[[2]], ]
 
 
 #------------------------------------------------------------------------------#
