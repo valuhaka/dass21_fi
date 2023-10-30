@@ -44,12 +44,19 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 - output: < models.Rdata >
   - necessary for < cfa.R >
 
-# 2. Analyses, exploration and visualisation
+# 2. Exploration
 
 ## < table1.R > 
 
 - Input: 1 R.data file with the chosen data for each cohort.
 - Output: Table 1 with the demographic information of the study population.
+
+## < sampleFormation.R >
+
+- Input: 1 R.data file with the full data for each cohort.
+- Output: A visR diagram showing the sample formation in each cohort.
+ 
+# 3. Analyses and visualisation
 
 ## < powerAnalyses.R >
 
@@ -65,14 +72,9 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
   - residual matrices after the 3+1 bifactor solution
   - other visualisations
 
-# 3. Producing normative data
+# 4. Producing normative data
 
--
-
-
-# 4. Subscripts
-
--
+# 5. Subscripts
 
 <div style="text-align: center;">
 
