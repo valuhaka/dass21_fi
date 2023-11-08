@@ -1,22 +1,39 @@
-<div style="text-align: center;">
+<h1 align="center"> The DASS-21 Finnish Validation </h1> <br>
+<p align="center">
+  <a href="https://helsinki.fi/hhs/">
+    <img alt="The DASS-21 Finnish Validation" title="The DASS-21 Finnish Validation" src="https://www.helsinki.fi/assets/drupal/styles/hero_image/s3/media-image/HHS_metro.jpg.webp?itok=wOMorWTB" width="600">
+  </a>
+</p>
   
-# Project description
+## Project description
 
-This folder will contain the code used to analyse the DASS-21 questionnaire for the upcoming article *The Depression, Anxiety and Stress Scales (DASS-21) among two Finnish occupational cohorts: Validation, Normative Data, and Pschometric Properties* (Vähäsarja et al., 2024?). The data were collected as a part of the Helsinki Health Study (helsinki.fi/hhs), an epidemiological study started in 2000.
+This folder will contain the code used to analyse the DASS-21 questionnaire for the upcoming article *The Depression, Anxiety and Stress Scales (DASS-21) among two Finnish occupational cohorts: Validation, Normative Data, and Pschometric Properties* (Vähäsarja et al.). The data were collected as a part of the [Helsinki Health Study](helsinki.fi/hhs), an epidemiological study started in 2000.
 
-# What is DASS?
+## Table of Contents
+
+- [What is DASS?](#what-is-dass)
+- [Scripts](#scripts)
+  - [1. Preprocessing](#1-preprocessing)
+  - [2. Exploration](#1-preprocessing)
+  - [3. Analyses and visualisation](#1-preprocessing)
+  - [4. Producing normative data](#1-preprocessing)
+  - [5. Subscripts](#1-preprocessing)
+- [Data](#data)
+
+
+## What is DASS?
 
 The Depression, Anxiety and Stress Scales (DASS-42) is a public domain questionnaire intended to measure and differentiate affective symptoms. The shortened DASS-21 has later become popular, particularly for research. It has appeared in thousands of original research articles and been translated to more than forty languages.
 
 Questionnaire data is tricky. We investigated whether or not the new Finnish translation works among Finns as it is expected to. If the factor structure or reported symptoms significantly deviated from English-speaking populations, the DASS-21 could not have been employed.
 
-# **SCRIPTS**
+# Scripts
 
 <div style="text-align: left;">
 
-# 1. Preprocessing
+## 1. Preprocessing
 
-## < preprocessData.R >
+### < preprocessData.R >
 
 - This script preprocesses the data. It compares the full data to a set of conditions:
   1. The person had to participate in 2022.
@@ -29,7 +46,7 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
   2. < fullData.Rdata >    - contains the full data set (dataframe) alongside a boolean vector for inclusion
       - needed to assess nonparticipation
 
-## < createDASS21Data.R >
+### < createDASS21Data.R >
 
 - This script further trims the chosen data down, as certain script (e.g. cfa.R) require no demographic variables.
 - Input:
@@ -39,30 +56,30 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
   2. < scales > [list of 2 DFs]     DASS-21 sum scores (subscales) for each cohort.
   3. < suomi >  [list of 2 vectors] TRUE = answered in Finnish, FALSE = not.
 
-## < defineModels.R >
+### < defineModels.R >
 
 - output: < models.Rdata >
   - necessary for < cfa.R >
 
-# 2. Exploration
+## 2. Exploration
 
-## < table1.R > 
+### < table1.R > 
 
 - Input: 1 R.data file with the chosen data for each cohort.
 - Output: Table 1 with the demographic information of the study population.
 
-## < sampleFormation.R >
+### < sampleFormation.R >
 
 - Input: 1 R.data file with the full data for each cohort.
 - Output: A visR diagram showing the sample formation in each cohort.
  
-# 3. Analyses and visualisation
+## 3. Analyses and visualisation
 
-## < powerAnalyses.R >
+### < powerAnalyses.R >
 
 - Estimates the power necessary to carry out the analyses.
 
-## < cfa.Rdata >
+### < cfa.Rdata >
 
 - Investigates the structural validity of the data.
 - Produces:
@@ -72,25 +89,25 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
   - residual matrices after the 3+1 bifactor solution
   - other visualisations
 
-# 4. Producing normative data
+## 4. Producing normative data
 
-# 5. Subscripts
+## 5. Subscripts
 
 <div style="text-align: center;">
 
-# **DATA**
+# Data
 
 _Note: the raw data is not available due EU privacy laws. The functions that handle the data are provided.
 _
 
 <div style="text-align: left;">
 
-## < models.Rdata > (list of 5 objects)
+### < models.Rdata > (list of 5 objects)
 
 - contains the 5 models tested by the CFA
 - used with lavaan
 
-## < scaleLocs.Rdata > (3x7 data frame)
+### < scaleLocs.Rdata > (3x7 data frame)
 
 - contains the locations of the DASS items that measure each of the subscales: depression, anxiety and stress
 
