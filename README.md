@@ -79,7 +79,7 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 
 - Estimates the power necessary to carry out the analyses.
 
-### < cfa.Rdata >
+### < cfa.R >
 
 - Investigates the structural validity of the data.
 - Produces:
@@ -88,10 +88,31 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
   - estimation of the number of factors
   - residual matrices after the 3+1 bifactor solution
   - other visualisations
+ 
+### < attritionAnalyses.R >
+
+- Takes < fullData.Rdata >.
+- Defines attrition as missing the 2022 questionnaire.
+- Transforms the education, marital status and SES variables.
+- Produces attrition tables using < attritionTable.R > from subscripts.
+- Outputs it in nice_table format.
 
 ## 4. Producing normative data
 
 ## 5. Subscripts
+
+### < attritionTable.R >
+
+- Contains two functions.
+  1. addRelativePortion(x)
+    - Writes the relative portion of cases after a value.
+    - Required by the function below.
+  3. makeAttrTable(data, contBool, attrition)
+    - Takes a data frame and two index vectors.
+      - "data" contains demographic variables of the subjects.
+      - "contBool" defines which columns in the data are continuous.
+      - "attrition" defines which subjects fell to attrition between 2017 and 2022.
+    - Outputs an attrition table in data.frame format.
 
 <div style="text-align: center;">
 
