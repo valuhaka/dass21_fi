@@ -101,7 +101,10 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 
 ### < makeNorms.R >
 
-- takes < dass.Rdata >
+- Takes < dass.Rdata >.
+- Defines the function "generatePRs".
+- Uses it to generate two dataframes, which compare DASS-21 scores with their respective percentile ranks in the two cohorts.
+- Outputs them in nice_table format.
 
 ## 5. Subscripts
 
