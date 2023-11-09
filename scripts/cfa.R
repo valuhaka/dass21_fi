@@ -40,7 +40,7 @@ residuals          <- FALSE    # Should the residual matrix of the bifactor
 
 backupOptions <- options()
 
-dataFolder <- "L:/ltdk_hhs45/data"    #  CHANGE
+dataFolder <- ".../data"    #  CHANGE
 
 setwd(dataFolder)
 
