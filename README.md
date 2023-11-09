@@ -99,6 +99,10 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 
 ## 4. Producing normative data
 
+### < makeNorms.R >
+
+- takes < dass.Rdata >
+
 ## 5. Subscripts
 
 ### < attritionTable.R >
@@ -118,17 +122,33 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 
 # Data
 
-_Note: the raw data is not available due EU privacy laws. The functions that handle the data are provided.
-_
-
 <div style="text-align: left;">
 
-### < models.Rdata > (list of 5 objects)
+### < cfaModels.Rdata > (1 list of 5 objects)
 
 - contains the 5 models tested by the CFA
 - used with lavaan
 
-### < scaleLocs.Rdata > (3x7 data frame)
+### < scaleLocs.Rdata > (a 3x7 data frame)
 
 - contains the locations of the DASS items that measure each of the subscales: depression, anxiety and stress
+
+----
+#### _Note: the following data is not available due EU privacy laws. The functions that handle the data are provided._
+
+### < fullData.Rdata > (2 lists of 2)
+
+- "data": a list of two data.frames containing DASS-21, RAND-36 and demographic variables in both cohorts.
+- "fulfillsAllConditions": a list of two boolean vectors denoting which subjects fulfill all inclusion criteria in each cohort.
+
+### < chosenData.Rdata > (2 lists of 2)
+
+- "data": a list of two data.frames containing DASS-21, RAND-36 and demographic variables in both cohorts, excluding those that do not fulfill the inclusion criteria.
+
+### < dass.Rdata > (4 lists of 2)
+
+- "dass": a list of DASS-21 data in the two cohorts.
+- "id": a list of the IDs for the subjects in the two cohorts.
+- "scales": a list of the DASS-21 subscale sumscores in the two cohorts.
+- "suomi": a list of two boolean vectors denoting which subjects answered in Finnish in each cohort.
 
