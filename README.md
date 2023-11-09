@@ -89,6 +89,12 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
   - residual matrices after the 3+1 bifactor solution
   - other visualisations
  
+### < criterionValidity.R >
+
+- Takes < chosenData.Rdata > and < dass.Rdata >.
+- Correlates each DASS-21 subscale (D, A, S, GD) with each of the RAND-36 scales.
+- Outputs the correlation table in nice_table format.
+ 
 ### < attritionAnalyses.R >
 
 - Takes < fullData.Rdata >.
