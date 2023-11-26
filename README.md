@@ -68,6 +68,11 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 - Input: 1 R.data file with the chosen data for each cohort.
 - Output: Table 1 with the demographic information of the study population.
 
+### < psychometrics.R > 
+
+- Input: 1 R.data file with the chosen data for each cohort.
+- Output: Table detailing the psychometric properties and distribution of the DASS-21 data in the two cohorts.
+
 ### < sampleFormation.R >
 
 - Input: 1 R.data file with the full data for each cohort.
