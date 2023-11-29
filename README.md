@@ -99,6 +99,12 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 - Takes < chosenData.Rdata > and < dass.Rdata >.
 - Correlates each DASS-21 subscale (D, A, S, GD) with each of the RAND-36 scales.
 - Outputs the correlation table in nice_table format.
+
+### < prevalence.R >
+
+- Takes < chosenData.Rdata > and < dass.Rdata >.
+- Creates a table of mean values in each subscale (D, A, S, GD) among men and women in both cohorts with a t-test comparison.
+- Outputs the table in nice_table format.
  
 ### < attritionAnalyses.R >
 
