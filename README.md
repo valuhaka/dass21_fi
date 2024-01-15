@@ -70,8 +70,11 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 
 ### < psychometrics.R > 
 
-- Input: 1 R.data file with the chosen data for each cohort.
-- Output: Table detailing the psychometric properties and distribution of the DASS-21 data in the two cohorts.
+- Input: < dass.Rdata >, < scaleLocs.Rdata >.
+- Calls on < psychometricsSubs.R >
+- Outputs:
+  1. A formatted table of the psychometric properties and distribution of the DASS-21 data in the two cohorts.
+  2. A formatted table of the differnece in properties between Finnish and non-Finnish answers in the two cohorts.
 
 ### < sampleFormation.R >
 
@@ -137,6 +140,14 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
       - "contBool" defines which columns in the data are continuous.
       - "attrition" defines which subjects fell to attrition between 2017 and 2022.
     - Outputs an attrition table in data.frame format.
+
+### < psychometricsSubs.R >
+
+- Contains one function.
+  - psychometricsTable(dass, scaleLocs, finnish)
+    - Required by < psychometrics.R >.
+    - Takes DASS data, scale locations and a boolean to determine the sample (Finnish or not).
+    - Outputs a list of three objects: a raw data.frame, a formatted data.frame, and a list of Ns.
 
 <div style="text-align: center;">
 
