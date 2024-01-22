@@ -7,7 +7,7 @@
   
 ## Project description
 
-This folder will contain the code used to analyse the DASS-21 questionnaire for the upcoming article *The Depression, Anxiety and Stress Scales (DASS-21) among two Finnish occupational cohorts: Validation, Normative Data, and Psychometric Properties* (Vähäsarja et al.). The data were collected as a part of the [Helsinki Health Study](helsinki.fi/hhs), an epidemiological study started in 2000.
+This folder will contain the code used to analyse the DASS-21 questionnaire for an upcoming article Vähäsarja et al. The data were collected as a part of the [Helsinki Health Study](helsinki.fi/hhs), an epidemiological study started in 2000.
 
 ## Table of Contents
 
