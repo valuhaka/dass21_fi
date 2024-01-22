@@ -171,7 +171,7 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 - contains the locations of the DASS items that measure each of the subscales: depression, anxiety and stress
 
 ----
-#### _Note: the following data is not available due EU privacy laws. The functions that handle the data are provided._
+#### _Note: the following data is not available due to EU privacy laws. The functions that handle the data are provided._
 
 ### < fullData.Rdata > (2 lists of 2)
 
