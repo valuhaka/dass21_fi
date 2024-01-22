@@ -7,15 +7,14 @@
 
 library(tidyverse)
 
+setwd("...")                    # YOUR DIRECTORY HERE
 backupOptions <- options()
 
-setwd(".../data")             # YOUR WORKING DIRECTORY HERE
 
-
-chosenData <- list(data.frame(),
-                   data.frame())
-fullData   <- list(data.frame(),
-                   data.frame())
+chosenData             <- list(data.frame(),
+                               data.frame())
+fullData               <- list(data.frame(),
+                               data.frame())
 fullfillsAllConditions <- list()
 
 
@@ -27,7 +26,7 @@ fullfillsAllConditions <- list()
 
 # Get the younger data. 
 
-data <- haven::read_sas('vahasarjaYounger.sas7bdat') %>%
+data <- haven::read_sas("vahasarjaWorkinage.sas7bdat") %>%
   data.frame() %>%
   haven::zap_formats()
 

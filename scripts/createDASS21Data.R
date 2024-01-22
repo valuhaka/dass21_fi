@@ -12,7 +12,7 @@
 library(tidyverse)
 
 backupOptions <- options()
-setwd(".../data")             # YOUR WORKING DIRECTORY HERE
+setwd(".../data")              #  YOUR DIRECTORY HERE"
 
 #------------------------------------------------------------------------------#
 
@@ -33,27 +33,64 @@ id[[1]]             <- data[[1]]$ID
 
 # Older cohort
 
-dass[[2]]           <- data[[2]][, 36:56]
+dass[[2]]           <- data[[2]][, 49:69]
 colnames(dass[[2]]) <- paste(rep("Q", 21), 
                              1:21, sep = "")
 suomi[[2]]          <- data[[2]]$suomi
 id[[2]]             <- data[[2]]$tunnus1
 
-# Remove NAs.
+# Fix NAs for language.
 
 suomi[[2]] <- replace_na(suomi[[2]], 1)
 
+load("scaleLocs.Rdata")
 
 #------------------------------------------------------------------------------#
 
-load("scaleLocs.Rdata")
+## Number of NAs per DASS scale. ##
+
+youngNaRatio <- lapply(dass[[1]], FUN = function(x) sum(is.na(x))) %>% 
+                unlist() / 3206
+
+youngNaRatioByScale <- c( "D" = youngNaRatio[scaleLocs$d] %>% sum(),
+                        "A" = youngNaRatio[scaleLocs$a] %>% sum(),
+                        "S" = youngNaRatio[scaleLocs$s] %>% sum() )
+
+oldNaRatio <- lapply(dass[[2]], FUN = function(x) sum(is.na(x))) %>% 
+                unlist() / 5736
+
+oldNaRatioByScale <- c( "D" = oldNaRatio[scaleLocs$d] %>% sum(),
+                        "A" = oldNaRatio[scaleLocs$a] %>% sum(),
+                        "S" = oldNaRatio[scaleLocs$s] %>% sum() )
+
+#------------------------------------------------------------------------------#
 
 for (k in 1:2) { # 2 cohorts
   
-  ## Table the sum variables. ##
-  
   dass[[k]] <- dass[[k]] - 1
-  dass[[k]][is.na(dass[[k]])] <- 1.5
+  
+  ## Impute the missing values (max 1 per scale) with the average over the scale.
+  
+  # Find missing values.
+  
+  naInd <- which(is.na(dass[[k]]), arr.ind=TRUE)
+  
+  for (i in 1:3) {
+    
+    scaleInd    <- scaleLocs[i] %>% unlist  #  The locations of the Qs for the scale.
+    
+    qsToBeReplaced <- naInd[naInd[, 2] %in% scaleInd, ]
+    
+    for (j in 1:dim(qsToBeReplaced)[1]) {
+      
+      ind         <- qsToBeReplaced[j, ] %>% unlist %>% c
+      chosenRow   <- dass[[k]][ind[1], scaleInd]
+      dass[[k]][ind[1], ind[2]] <- sum(chosenRow, na.rm = TRUE) / 6
+      
+    }
+  }
+  
+  ## Table the sum variables. ##
   
   scales[[k]]        <- data.frame(
     dass[[k]] %>% dplyr::select(scaleLocs$d) %>% rowSums(),

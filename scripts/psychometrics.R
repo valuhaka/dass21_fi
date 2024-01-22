@@ -7,128 +7,41 @@
 require(tidyverse)
 require(rempsyc)
 
-# Use only Finnish answers?
+## SETTINGS ##
 
-finnishOnly <- 1
+dataFolder       <- ".../data"                # YOUR DIRECTORY HERE
+subScriptsFolder <- ".../scripts/subscripts"  # YOUR DIRECTORY HERE
 
 ## Load the data. ##
 
-setwd(".../data")          # YOUR DIRECTORY HERE
-
+setwd(dataFolder)          
 load("scaleLocs.Rdata")    # Load the locations of the scales among the questions.
 load("dass.Rdata")         # Load the data.
 
 
-# If chosen, remove non-Finnish answers.
+## Load the subscript. ##
 
-if (finnishOnly == 1) { 
-  for (k in 1:2) dass[[k]]   <- dass[[k]][suomi[[k]], ]
-  for (k in 1:2) scales[[k]] <- scales[[k]][suomi[[k]], ]
-}
-
-# Calculate the Ns.
-
-N      <- lapply(dass, FUN = dim)
-N[[1]] <- N[[1]][1]
-N[[2]] <- N[[2]][1]
+setwd(subScriptsFolder)
+source("psychometricsSub.R")
+setwd(dataFolder)  
 
 
-## Calculate the reliabilities. ##
+## Produce Table 5. ##
 
-rels <- list(data.frame(rep(NA, 25),
-                        rep(NA, 25),
-                        rep(NA, 25)),
-             data.frame(rep(NA, 25),
-                        rep(NA, 25),
-                        rep(NA, 25)))
+tableFive  <- psychometricsTable(dass, scaleLocs, TRUE)
+print(tableFive[[2]])
 
-for (k in 1:2) {
-  for (i in 1:3) {
-    rel            <- dass[[k]]            %>% 
-                  select(scaleLocs[, i])   %>% 
-                  psych::reliability()
-    
-    rels[[k]][i, ] <- rel$result.df[1:3]  %>% 
-                  round(digits = 2)
-  }
-  rel            <- dass[[k]]             %>% 
-                  psych::reliability()
-  
-  rels[[k]][4, ] <- rel$result.df[1:3]    %>% 
-    round(digits = 2)
-  
-  colnames(rels[[k]]) <- c("omegah", "alpha", "omegatot")
-  
-  rels[[k]]      <- rels[[k]] %>% relocate("alpha", 1)
-  
-  rm(rel)
-}
+## Compare Finnish answers with non-Finnish answers. ##
 
-## SEm = std(sum(X)) * sqrt(1 - R)
+nonFinnish <- psychometricsTable(dass, scaleLocs, FALSE)
+comparison <- tableFive$raw[, 3:20] - nonFinnish$raw[, 3:20]
+comparison <- cbind(tableFive$raw[, 1:2], comparison)
 
-SEm <- data.frame(rep(NA, 25), rep(NA, 25))
+niceComparison  <- nice_table(comparison, 
+                            title = c("", 
+                                      "The raw differences in sample distribution and reliability statistics between all participants and Finnish responses only, in the two Helsinki Health Study cohorts (2022)"),
+                            separate.header = TRUE,
+                            note = "SEm = SD × √(1 - reliability). n1 = Finnish answers, n2 = non-Finnish answers. Skew estimated as G1, kurtosis as G2. For details, see Joanes & Gill (1998).",
+                            width = 1)
 
-for (k in 1:2) {
-  for (i in 1:3) {
-    SEm[i, k] <- dass[[k]]            %>% 
-      select(scaleLocs[, i])          %>%
-      rowSums()                       %>%
-      sd(., na.rm = TRUE) * sqrt(1 - rels[[k]][i, 3]) # omega_tot
-  }
-  SEm[4, k] <- dass[[k]]              %>%
-    rowSums()                         %>%
-    sd(., na.rm = TRUE) * sqrt(1 - rels[[k]][4, 2])   # omega_h
-}
-
-## Into a data frame ##
-
-df            <- list()
-  
-for (k in 1:2) {
-  df[[k]]     <- dass[[k]]            %>% 
-    cbind(scales[[k]], .)                             %>%
-    psych::describe(type = 2)                         %>% 
-    data.frame()                                      %>% 
-    select(n, mean, median, sd, skew, kurtosis)       %>% 
-    round(digits = 3)                                 %>% 
-    add_column(rels[[k]], SEm[, k], .after = "kurtosis")
-  df[[k]]$median <- df[[k]]$median %>%
-                                    round(digits = 0)
-}
-
-## Format ##
-
-ranges                        <- c(rep("0—21", 3), "0—63", rep("0—7", 21))
-
-df            <- data.frame(rownames(df[[1]]),
-                                            ranges,
-                                            df[[1]], 
-                                            df[[2]])    %>%
-                                 mutate(n.1 = n.1 %>% round(digits = 0))
-
-names(df)     <- c("Qs", "range", 
-                                   
-                                   "working-aged.n", "working-aged.m",
-                                   "working-aged.md", "working-aged.SD",
-                                   "working-aged.skew (G_1)", "working-aged.kurt (G_2)", 
-                                   "working-aged.α", "working-aged.ω_h",
-                                   "working-aged.ω_tot", "working-aged.SEm", 
-                                   
-                                   "older.n", "older.m", 
-                                   "older.md", "older.SD", 
-                                   "older.skew (G_1)", "older.kurt (G_2)", 
-                                   "older.α", "older.ω_h", 
-                                   "older.ω_tot", "older.SEm")
-
-note                          <- paste0("N_working-aged=", N[[1]], ", N_older=", N[[2]], ".
-SEm = SD × √(1 - α). 
-For a comparison of measures of skew and kurtosis, see Joanes and Jill (1998).")
-
-
-niceDf        <- nice_table(df, title = c("Table 1.", 
-                               "Sample distribution and reliability statistics in the two Helsinki Health Study cohorts."),
-                               separate.header = TRUE,
-                               note = note,
-                               width = 1)
-
-print(niceDf)
+print(niceComparison)

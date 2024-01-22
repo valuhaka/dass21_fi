@@ -14,7 +14,7 @@ library(ltm)
 
 ## Data ##
 
-setwd(".../data")                # CHANGE
+setwd(".../data")                # YOUR DIRECTORY HERE
 load("dass.Rdata")
 load("chosenData.Rdata")
 

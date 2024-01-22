@@ -12,7 +12,7 @@ library(rempsyc)
 
 ## Get the data ##
 
-setwd('.../data')         # CHANGE
+setwd(".../data")              #  YOUR DIRECTORY HERE"
 
 
 # Choose only those that answered in Finnish. #
@@ -32,6 +32,7 @@ generatePRs <- function(x, len){
     
   x     <- x %>% unlist() %>% c()
   reps  <- factor(x) %>% levels() %>% as.numeric()
+  reps  <- reps[reps %% 1 == 0]                    # integers only
   
   df    <- data.frame(rep("", len),
                       rep("", len))

@@ -3,8 +3,7 @@
 
 ## Here we define the factor solutions used for the analyses. ##
 
-setwd(".../data")             # YOUR WORKING DIRECTORY HERE
-
+setwd(".../data")              #  YOUR DIRECTORY HERE"
 
 models <- list()
 
@@ -54,4 +53,4 @@ models$twoPlusOneFactorModel2 <- "
   Q1 + Q6 + Q8 + Q11 + Q12 + Q14 + Q18
 "
 
-save(models, file = 'cfaModels.Rdata')
+save(models, file = "cfaModels.Rdata")

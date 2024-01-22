@@ -162,28 +162,33 @@ for (k in 1:2) {
 
 for (k in 1:2) for (i in 1:4) for (j in 1:4) fits[[k]][i,j] <- fits[[k]][i,j] %>% 
   as.numeric %>%
-  round(digits = 4)
+  round(digits = 3)
 
 ## Format ##
 
-fits           <- data.frame(c("configural", "metric",
-                               "scalar", "strict",
-                               "cut-offs"),
+fits           <- data.frame(c("Configural", "Metric",
+                               "Scalar", "Strict",
+                               "Cut-offs"),
                               fits[[1]], fits[[2]])
-colnames(fits) <- c("model",
-                     "working-aged.cfi", "working-aged.tli",
-                     "working-aged.rmsea", "working-aged.srmr",
-                     "older.cfi", "older.tli",
-                     "older.rmsea", "older.srmr")
+colnames(fits) <- c("Model",
+                     "Working-aged.cfi", "Working-aged.tli",
+                     "Working-aged.rmsea", "Working-aged.srmr",
+                     "Older.cfi", "Older.tli",
+                     "Older.rmsea", "Older.srmr")
 
 
 #------------------------------------------------------------------------------#
 
 ##  Format nicely.  ##
 
+
+title = c("Table 5", 
+          "Inter-gender invariance analyses in the two Helsinki Health Study cohort between men and women (2022)")
+note = "Fits estimated using the robust weighted-least-squares method (WLSMV) estimation method. CFI = Comparative Fit Index; TLI = Tucker-Lewis Index; RMSEA = Root Mean Square Error of Approximation; SRMR = Standardised Root Mean Squared Residual."
+
 niceInvarianceTable <- nice_table(fits, 
-                           title = c("Table 1", 
-                           "Invariance analyses in the two Helsinki Health Study cohorts. All values for variables measured in 2022."),
+                           title = title,
+                           note = note,
                            separate.header = TRUE)
 
 

@@ -1,8 +1,3 @@
-###  Luka Vähäsarja 14.7.2023  ###
-###  HHS, KTTL, LTDK, HY       ###
-
-## This script makes two visR diagrams that visualise the sample formation in the two [HHS](helsinki.fi/hhs) samples.
-
 library(DiagrammeR)
 library(visR)
 library(tidyverse)
@@ -12,7 +7,7 @@ library(tidyverse)
 
 backupOptions <- options()
 
-setwd('.../data')       #  YOUR WORKING DIRECTORY HERE
+setwd(".../data")              #  YOUR DIRECTORY HERE"
 
 load("fullData.Rdata")
 

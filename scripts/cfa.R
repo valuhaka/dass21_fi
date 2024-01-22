@@ -16,7 +16,11 @@ library(psych)
 library(corrplot)
 library(rempsyc)
 
+backupOptions <- options()
+
 #------------------------------------------------------------------------------#
+
+dataFolder <- ".../data"    #  YOUR DIRECTORY HERE
 
 # Choices.
 # Note: running multiple subsections may cause bugs.
@@ -27,9 +31,9 @@ covariances        <- FALSE    # Should the covariances be calculated?
 
 nFactors           <- FALSE    # Should the amount of factors be analysed?
 figures1           <- FALSE    # Should the structure be plotted?
-fitsTable          <- FALSE    # Should model fit indice be tabled?
+fitsTable          <- FALSE    # Should model fit indices be tabled?
 
-loadings           <- FALSE    # Should loadings be tabled?
+loadings           <- FALSE    # Should the loadings be tabled?
 figures2           <- FALSE    # Should the solutions be plotted?
 residuals          <- FALSE    # Should the residual matrix of the bifactor  
                                # solution be plotted?
@@ -37,10 +41,6 @@ residuals          <- FALSE    # Should the residual matrix of the bifactor
 #------------------------------------------------------------------------------#
 
 ## Fetch the data and other necessary material.   ##
-
-backupOptions <- options()
-
-dataFolder <- ".../data"    #  CHANGE
 
 setwd(dataFolder)
 
@@ -235,7 +235,7 @@ if (fitsTable == 1) {
   
   niceModelFits         <- nice_table(modelFitsTable,
                              separate.header = TRUE,
-                             title = c("Table 2.", 
+                             title = c("Table 3.", 
         "Model fit indices from a confirmatory factor analysis (CFA) on the DASS-21 data from the working-aged and older cohorts of the Helsinki Health Study - nuoret ensin, sitten vanhat"),
                              note  = "Fits esimated using the robust WLSMV method. ")
   
@@ -314,7 +314,10 @@ if (loadings == 1) {
                                      "S.slope", "S.SE")
     
     estimates[[k]]             <- data.frame(qNames, estimates[[k]]) %>%
-                                   nice_table(estimates[[k]], separate.header = TRUE)
+                                   nice_table(estimates[[k]], 
+                                              title = c("Table 4.",
+                                                        "Estimates for the standardized factor loadings from the bifactorial solution to CFA in the two cohorts of the Helsinki Health Study in 2022"),
+                                              separate.header = TRUE)
     
     
   }
