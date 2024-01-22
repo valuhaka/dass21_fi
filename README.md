@@ -1,4 +1,4 @@
-<h1 align="center"> The Validation of the DASS-21 for Finns </h1> <br>
+<h1 align="center"> Depression Anxiety Stress Scales (DASS-21) for Finnish-speaking adults: validation and normative data </h1> <br>
 <p align="center">
   <a href="https://helsinki.fi/hhs/">
     <img alt="The DASS-21 Finnish Validation" title="The DASS-21 Finnish Validation" src="https://www.helsinki.fi/assets/drupal/styles/hero_image/s3/media-image/HHS_metro.jpg.webp?itok=wOMorWTB" width="600">
