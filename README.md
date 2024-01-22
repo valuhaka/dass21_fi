@@ -103,6 +103,12 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 - Correlates each DASS-21 subscale (D, A, S, GD) with each of the RAND-36 scales.
 - Outputs the correlation table in nice_table format.
 
+### < measurementInvariance.R >
+
+- Takes < chosenData.Rdata >, < dass.Rdata >, < cfaModels.Rdata >, and < scaleLocs.Rdata >.
+- Compares men and women's DASS-21 factor structure following [Schoot et al.'s (2012)](https://doi.org/10.1080/17405629.2012.686740) checklist.
+- - Outputs the invariance analysis table in nice_table format.
+
 ### < prevalence.R >
 
 - Takes < chosenData.Rdata > and < dass.Rdata >.
@@ -114,7 +120,7 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 - Takes < fullData.Rdata >.
 - Defines attrition as missing the 2022 questionnaire.
 - Transforms the education, marital status and SES variables.
-- Produces attrition tables using < attritionTable.R > from subscripts.
+- Produces attrition tables using < attritionSub.R > from subscripts.
 - Outputs it in nice_table format.
 
 ## 4. Producing normative data
@@ -128,7 +134,7 @@ Questionnaire data is tricky. We investigated whether or not the new Finnish tra
 
 ## 5. Subscripts
 
-### < attritionTable.R >
+### < attritionSub.R >
 
 - Contains two functions.
   1. addRelativePortion(x)
